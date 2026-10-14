@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <title>Clanker</title>
+  <style>
+    html, body {
+      margin: 0; overflow: hidden; background: #000; font-family: sans-serif; color: #fff;
+      user-select: none; -webkit-user-select: none; touch-action: none; overscroll-behavior: none;
+    }
+    #cross { position: fixed; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #fff; border-radius: 50%; box-shadow: 0 0 2px #000; transition: background .08s; }
+    #cross.hit { background: #ff3333; }
+    #hud { position: fixed; left: 16px; bottom: 16px; font-size: 18px; text-shadow: 0 0 4px #000; line-height: 1.5; }
+    #msg { position: fixed; left: 50%; top: 40%; transform: translate(-50%, -50%); font-size: 28px; font-weight: bold; text-shadow: 0 0 6px #000; opacity: 0; transition: opacity .3s; pointer-events: none; white-space: nowrap; }
+    #hint { position: fixed; left: 50%; top: 50%; transform: translate(-50%, 24px); font-size: 14px; opacity: .8; text-shadow: 0 0 4px #000; }
+
+    /* タッチUI */
+    #touch { position: fixed; inset: 0; display: none; pointer-events: none; }
+    #stick { position: absolute; left: max(32px, env(safe-area-inset-left)); bottom: max(32px, env(safe-area-inset-bottom)); width: 140px; height: 140px; border-radius: 50%; background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.3); pointer-events: auto; }
+    #knob { position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; background: rgba(255,255,255,.35); pointer-events: none; }
+    #fire { position: absolute; right: max(32px, env(safe-area-inset-right)); bottom: max(32px, env(safe-area-inset-bottom)); width: 110px; height: 110px; border-radius: 50%; background: rgba(255,80,60,.35); border: 2px solid rgba(255,255,255,.4); pointer-events: auto; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; }
+
+    body.touch #touch { display: block; }
+    body.touch #hint { display: none; }
+    body.touch #hud { bottom: auto; top: max(16px, env(safe-area-inset-top)); left: max(16px, env(safe-area-inset-left)); }
+  </style>
+</head>
+<body>
+  <div id="cross"></div>
+  <div id="msg"></div>
+  <div id="hint">クリックで操作開始 / WASD移動 / マウスで視点 / クリックで射撃 / ESCで解除</div>
+  <div id="hud"></div>
+  <div id="touch">
+    <div id="stick"><div id="knob"></div></div>
+    <div id="fire">撃つ</div>
+  </div>
+  <script type="module" src="/client/main.js"></script>
+</body>
+</html>
