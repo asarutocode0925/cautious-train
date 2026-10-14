@@ -1,19 +1,23 @@
-# app名は世界で一意にする必要があります。使いたい名前に変更してください
-app = "clanker-game-REPLACE_ME"
-primary_region = "nrt"
+# fly.toml app configuration file generated for cautious-train on 2026-10-14T15:47:26Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'cautious-train'
+primary_region = 'ams'
 
 [build]
 
 [env]
-  PORT = "8080"
+  PORT = '8080'
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = "off"
+  auto_stop_machines = 'off'
   auto_start_machines = true
   min_machines_running = 1
 
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = "512mb"
+  size = 'shared-cpu-1x'
+  memory = '512mb'
